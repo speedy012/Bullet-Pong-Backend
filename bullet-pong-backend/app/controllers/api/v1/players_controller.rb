@@ -11,15 +11,16 @@ class Api::V1::PlayersController < ApplicationController
       render json: @player, status: :accepted
     else
       render json: { errors: @player.errors.full_messages }, status: :unprocessible_entity
+    end
   end
-end
 
-private
+  private
 
-def player_params
-  params.permit(:initials)
-end
+  def player_params
+    params.permit(:initials)
+  end
 
-def find_player
-  @player = Player.find(params[:id])
+  def find_player
+    @player = Player.find(params[:id])
+  end
 end
