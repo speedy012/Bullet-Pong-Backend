@@ -11,15 +11,16 @@ class Api::V1::ScoresController < ApplicationController
       render json: @score, status: :accepted
     else
       render json: { errors: @score.errors.full_messages }, status: :unprocessible_entity
+    end
   end
-end
 
-private
+  private
 
-def score_params
-  params.permit(:number)
-end
+  def score_params
+    params.permit(:number)
+  end
 
-def find_score
-  @score = Score.find(params[:id])
+  def find_score
+    @score = Score.find(params[:id])
+  end
 end
